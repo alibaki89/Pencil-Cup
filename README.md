@@ -1,38 +1,63 @@
 # Pencil Cup
 
-A hand-drawn 3v3 arcade football game featuring human and AI teams, a fixed-step match simulation, possession, goalkeeping, replay, set pieces, and a customizable presentation.
+A hand-drawn 3v3 arcade football game set in a pencil world. Two human or AI sides contest short matches with passing, shooting, possession changes, goalkeeping, set pieces, replays, and a lightweight tournament structure.
 
-**[Play on itch.io](https://abprojects.itch.io/pencil-cup)** · [Technical report](docs/TECHNICAL_REPORT.pdf) · [Report source](docs/TECHNICAL_REPORT.md) · [Architecture](docs/ARCHITECTURE.png)
+**Links:** [Play on itch.io](https://abprojects.itch.io/pencil-cup) · [Technical report (PDF)](docs/TECHNICAL_REPORT.pdf) · [Technical report (Markdown)](docs/TECHNICAL_REPORT.md) · [Architecture diagram](docs/ARCHITECTURE.png)
 
-![Game preview](docs/screenshots/cover.png)
+## Gallery
 
-![Kickoff in the game](docs/screenshots/kickoff.png)
+Original images from the [official itch.io game page](https://abprojects.itch.io/pencil-cup):
 
-![System architecture](docs/ARCHITECTURE.png)
+![Cover 1](docs/itch-gallery/01-cover.png)
 
-## Run
+![Screenshot 2](docs/itch-gallery/02-screenshot.png)
 
-Open **`index.html`** in a modern desktop browser with WebGL support. The runtime is a single-file HTML5 build: bundled scripts, styles and assets stay embedded. The game can also be uploaded as an HTML5 ZIP to itch.io with `index.html` at the root.
+![Screenshot 3](docs/itch-gallery/03-screenshot.png)
 
-## Gameplay and controls
+![Screenshot 4](docs/itch-gallery/04-screenshot.png)
 
-WASD to move, Shift to sprint, P to pause; left mouse to pass/charge a shot with the ball, right mouse for lofted play; without the ball, left mouse to tackle and right mouse to switch players or call the goalkeeper.
+## What the game contains
 
-## Repository guide
+- **3v3 football loop:** short matches with manual control, AI teammates and opponents, possession, tackles, goalkeeper calls, and goals.
+- **Multiple play modes:** friendly play, quick matches, and the Pencil Cup flow.
+- **Fixed-step simulation:** the match state advances at 120 Hz for more stable gameplay behavior across display frame rates.
+- **Presentation systems:** replay, score HUD, pause/results screens, quality settings, and legibility options.
+- **Self-contained distribution:** the playable build remains one `index.html` with embedded runtime code and assets.
 
-- `index.html`: complete executable game. Do not separate or import runtime dependencies.
-- `docs/TECHNICAL_REPORT.pdf`: formal report covering architecture, algorithms, behavior changes and limits.
-- `docs/TECHNICAL_REPORT.md`: readable report source for GitHub.
-- `docs/ARCHITECTURE.png`: diagram of major subsystems.
-- `docs/RELEASE_NOTES.md`: precise change summary.
-- `docs/VALIDATION.md`: structured manual acceptance checks.
-- `docs/RELEASE_MANIFEST.json`: original and release SHA-256 hashes.
-- `tests/verify.mjs`: non-graphics regression and syntax smoke checks.
+## Controls
 
-## Verification and performance
+- **Move:** `W A S D`
+- **Sprint:** `Shift`
+- **Pause:** `P`
+- **With the ball:** `Left Mouse` pass, hold `Left Mouse` to shoot, `Right Mouse` to loft the ball.
+- **Without the ball:** `Left Mouse` chase or tackle, `Right Mouse` switch player or call the goalkeeper.
 
-The updated build passed JavaScript syntax and document-integrity checks. An Xvfb-hosted Chromium session initialized WebGL and checked the visible menus. A match reached the kickoff sequence. Render-submission scheduling was examined with the WebGL draw method stubbed; **no measured FPS or GPU speedup is claimed**. See the report for details and `docs/VALIDATION.md` for the essential browser tests before publishing to itch.io.
+## Run locally
 
-## Source, screenshots and permissions
+Open **`index.html`** in a modern desktop browser with WebGL support. The same file can be uploaded to itch.io as an HTML5 project so long as `index.html` stays at the ZIP root.
 
-The existing game page is [Pencil Cup on itch.io](https://abprojects.itch.io/pencil-cup). The included cover screenshot was captured from this game in a software-WebGL browser. The itch.io page can supply additional screenshots once their exact image files are downloaded or verified. Third-party embedded engine licences remain with their original code. This repository does not include a new project licence; discuss licence terms before distributing for reuse.
+## Repository contents
+
+- `index.html` — the entire playable game. No runtime dependency is split into extra source files.
+- `docs/TECHNICAL_REPORT.pdf` — formal engineering report.
+- `docs/TECHNICAL_REPORT.md` — GitHub-readable source of the report.
+- `docs/ARCHITECTURE.png` / `docs/ARCHITECTURE.dot` — subsystem diagram.
+- `docs/itch-gallery/` — the original itch.io gallery, with image-source records.
+- `docs/RELEASE_NOTES.md` — exact change summary for this maintenance pass.
+- `docs/VALIDATION.md` — browser acceptance checklist.
+- `docs/RELEASE_MANIFEST.json` — source/release hashes and release metadata.
+- `tests/verify.mjs` — self-contained packaging and syntax smoke checks.
+
+## Maintenance changes in this release
+
+This maintenance pass does **not** redesign the game or split it into modules. The main behavior change is an **idle-render governor**: hidden tabs skip rendering and non-gameplay views render at most 10 times per second. Active match simulation, controls, football rules, physics parameters, and bundled dependencies remain on their original path.
+
+## Verification status
+
+- JavaScript syntax and packaging checks pass.
+- A WebGL-capable Chromium session reached menu and kickoff states without uncaught JavaScript errors.
+- Manual browser playtesting is still required before any production republish.
+
+## Notes on visuals and ownership
+
+The images in `docs/itch-gallery/` were downloaded from the official itch.io game page; their exact source URLs and SHA-256 checksums are in `docs/ITCH_GALLERY_SOURCES.json`. No fabricated marketing images were created. Third-party embedded engine/runtime notices remain in the shipped source. No additional repository-wide licence has been selected here.

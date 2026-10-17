@@ -1,1 +1,52 @@
-digraph G { rankdir=TB; bgcolor="white"; pad="0.15"; nodesep="0.22"; ranksep="0.20"; node[shape=box,style="rounded,filled",color="#668397",fillcolor="#eef4f5",fontname="DejaVu Sans",fontsize=12,margin="0.20,0.13"]; edge[color="#487083",penwidth=1.5,arrowsize=0.65];n0[label="Input & settings"];n1[label="Match controller"];n2[label="Fixed-step simulation (120 Hz)"];n3[label="Players / AI / possession"];n4[label="Ball + referee + keeper"];n5[label="Scene / camera / replay"];n6[label="WebGL + DOM presentation"];n0->n1;n1->n2;n2->n3;n3->n4;n4->n5;n5->n6;}
+digraph G {
+  rankdir=LR;
+  graph [bgcolor="white", pad="0.18", nodesep="0.28", ranksep="0.5"];
+  node [shape=box, style="rounded,filled", color="#577387", fillcolor="#eef4f7", fontname="DejaVu Sans", fontsize=11, margin="0.18,0.12"];
+  edge [color="#4c7085", penwidth=1.4, arrowsize=0.7, fontname="DejaVu Sans", fontsize=10];
+
+  subgraph cluster_frontend {
+    label="Player-facing layer"; color="#bfd3de"; style="rounded";
+    input [label="Input
+keyboard · mouse · gamepad"];
+    menu [label="Menus / HUD / settings
+DOM overlays + score + prompts"];
+    replay [label="Replay + presentation state"];
+  }
+
+  subgraph cluster_core {
+    label="Match control"; color="#bfd3de"; style="rounded";
+    match [label="Match controller
+mode, score, phases, referee"];
+    loop [label="Fixed-step simulation
+120 Hz, bounded catch-up"];
+  }
+
+  subgraph cluster_world {
+    label="World simulation"; color="#bfd3de"; style="rounded";
+    players [label="Players and teams
+control, stamina, simple AI"];
+    ball [label="Ball / possession / kicking"];
+    keeper [label="Goalkeeper + set pieces"];
+  }
+
+  subgraph cluster_render {
+    label="Rendering"; color="#bfd3de"; style="rounded";
+    scene [label="Scene + camera + transforms"];
+    render [label="WebGL renderer
+quality tiers, idle render governor"];
+  }
+
+  input -> match;
+  menu -> match [label="configuration"];
+  match -> loop;
+  loop -> players;
+  loop -> ball;
+  players -> keeper;
+  ball -> keeper;
+  players -> scene;
+  ball -> scene;
+  keeper -> scene;
+  replay -> scene;
+  scene -> render;
+  match -> menu [label="state / score / prompts"];
+}

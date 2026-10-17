@@ -1,0 +1,29 @@
+{
+  "source_page": "https://abprojects.itch.io/pencil-cup",
+  "images": [
+    {
+      "file": "01-cover.png",
+      "source": "https://img.itch.zone/aW1nLzI4NjEyNzg5LnBuZw==/original/hnvqTe.png",
+      "sha256": "e263cd358dc63d02d8c0d5c86568e23999e538f113c36c0d5df906f3faaa2c28",
+      "bytes": "1857548"
+    },
+    {
+      "file": "02-screenshot.png",
+      "source": "https://img.itch.zone/aW1hZ2UvNDc5NzQyMy8yODYxMjg3Ny5wbmc=/original/O2sLYj.png",
+      "sha256": "eec01cf5fde170a4ee56ddc59c0595e1a6a7bea6d31c5059c312601a6b91cee3",
+      "bytes": "596483"
+    },
+    {
+      "file": "03-screenshot.png",
+      "source": "https://img.itch.zone/aW1hZ2UvNDc5NzQyMy8yODYxMjg0MC5wbmc=/original/RuOhFH.png",
+      "sha256": "a85ab261ca8c8d5bab1d66e98c9856106477cbfcace2eacd197706d7527642d4",
+      "bytes": "1489087"
+    },
+    {
+      "file": "04-screenshot.png",
+      "source": "https://img.itch.zone/aW1hZ2UvNDc5NzQyMy8yODYxMjc5Ny5wbmc=/original/xiG10r.png",
+      "sha256": "8b65f3c081a98f210d31fde5ae463c1230e683978f4f88e56b9273adeacdf87a",
+      "bytes": "752164"
+    }
+  ]
+}
