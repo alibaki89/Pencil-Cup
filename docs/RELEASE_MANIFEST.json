@@ -1,0 +1,17 @@
+{
+  "project": "Pencil-Cup",
+  "source_basename": {
+    "Pencil-Cup": "index(20261017-012039).html",
+    "Pencil-Arena": "PencilArena(4).zip:index.html",
+    "The-Last-Page": "index406(1)(5).html"
+  },
+  "source_sha256": "b34d68f508b4fed0953844f736a54bdb010750c7b4686bb2b6a9c8aaa9c9b515",
+  "release_sha256": "86b04fccb74118b24e9c48a680c5e13c2659d5fa1b85823d323f1eedb2f8ea0f",
+  "original_bytes": 799521,
+  "release_bytes": 799713,
+  "changes": [
+    "Skip hidden-tab rendering and limit non-gameplay 3D rendering to at most 10 FPS; simulation and input polling retain their previous cadence.",
+    "Preserve the entire game (scripts, styles, vendor libraries and embedded assets) inside one index.html; no module split.",
+    "Do not alter game balance, physics parameters, core algorithms, or external dependencies."
+  ]
+}
